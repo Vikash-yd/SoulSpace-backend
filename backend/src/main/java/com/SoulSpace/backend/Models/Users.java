@@ -1,15 +1,27 @@
 package com.SoulSpace.backend.Models;
 
+import com.SoulSpace.backend.Models.Role;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
+import java.util.UUID;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
+
 @Table(name = "users")
 public class Users {
+    @Version
+    private Integer version;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private String name;
 
@@ -19,7 +31,7 @@ public class Users {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private Role role; // Enum: ADMIN, MEMBER, LIBRARIAN
+    private Role role=Role.MEMBER; // Enum: ADMIN, MEMBER, LIBRARIAN
 
     private LocalDateTime membershipDate = LocalDateTime.now();
 
@@ -36,8 +48,4 @@ public class Users {
     // Constructors
 }
 
-enum Role {
-    ADMIN,
-    MEMBER,
-    LIBRARIAN
-}
+
