@@ -26,6 +26,7 @@ public class UserServices {
         Users user = new Users();
 //        user.setId(UUID.randomUUID()); // Generate UUID for user
         user.setName(requestDTO.getName());
+        user.setUsername(requestDTO.getName());
         user.setEmail(requestDTO.getEmail());
         if (requestDTO.getRole() == null) {
             user.setRole(Role.MEMBER);
@@ -81,6 +82,7 @@ public class UserServices {
         UserResponseDTO responseDTO = new UserResponseDTO();
         responseDTO.setId(user.getId()); // UUID
         responseDTO.setName(user.getName());
+        responseDTO.setUsername(user.getUsername());
         responseDTO.setEmail(user.getEmail());
         responseDTO.setRole(user.getRole());
         return responseDTO;

@@ -24,6 +24,7 @@ public class Users {
     private UUID id;
 
     private String name;
+    private String username;
 
     @Column(unique = true, nullable = false)
     private String email;
