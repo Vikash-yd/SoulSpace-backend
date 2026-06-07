@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CommunityLounge {
+public class Lounge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -21,15 +21,26 @@ public class CommunityLounge {
 
     private String title;
 
+    @Column(length = 2000)
     private String description;
+
+    private String icon;
 
     private String bannerImage;
 
+    private Boolean active;
+
+    private String location;
+
+    private Integer capacity;
+
+    private String openingHours;
+
     @OneToMany(
-            mappedBy = "communityLounge",
+            mappedBy = "lounge",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     @JsonManagedReference
-    private List<Lounges    > lounges;
+    private List<LoungeEvent> events;
 }
